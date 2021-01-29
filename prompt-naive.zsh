@@ -1,3 +1,14 @@
+zmodload zsh/zle
+zmodload zsh/zutil
+
+autoload -Uz colors && colors
+
+source $PROMPT_NAIVE_ROOT/async.zsh
+source $PROMPT_NAIVE_ROOT/modules/utils.zsh
+source $PROMPT_NAIVE_ROOT/modules/section.zsh
+source $PROMPT_NAIVE_ROOT/modules/git.zsh
+source $PROMPT_NAIVE_ROOT/modules/default-config.zsh
+
 prompt-naive-render-item() {
   local target="$1" lr
 
@@ -59,3 +70,5 @@ prompt-naive-init() {
   add-zsh-hook precmd  prompt-naive-precmd
   zle -N prompt-naive-reset
 }
+
+prompt-naive-init
