@@ -56,6 +56,8 @@ prompt-naive-preexec() {
 }
 
 prompt-naive-precmd() {
+  prompt_naive_last_exit=$?
+
   prompt-naive-save-timer
   unset prompt_naive_timer
 

@@ -6,11 +6,11 @@ zstyle ":prompt:naive:right" enabled 1
 zstyle ":prompt:naive:item:user"  show-host   0
 zstyle ":prompt:naive:item:timer" show-larger 1
 zstyle ":prompt:naive:item:git"   async       1
+zstyle ":prompt:naive:item:exit"  describe    1
 
 zstyle ":prompt:naive:*:clock"   content "%*"
 zstyle ":prompt:naive:*:path"    content "%40<..<%~%<<"
 zstyle ":prompt:naive:*:prompt"  content "%(!.#.$)"
-zstyle ":prompt:naive:*:exit"    content "%(?..(%?%))" #TODO empty when no exit code
 zstyle ":prompt:naive:*:newline" content $'\n'
 
 zstyle ":prompt:naive:*:*"     pre  ""
@@ -21,8 +21,8 @@ zstyle ":prompt:naive:*:timer" pre  "%F{yellow}"
 zstyle ":prompt:naive:*:timer" post "%f"
 zstyle ":prompt:naive:*:clock" pre  "%F{blue}"
 zstyle ":prompt:naive:*:clock" post "%f"
-zstyle ":prompt:naive:*:exit"  pre  "%F{red}"
-zstyle ":prompt:naive:*:exit"  post "%f"
+zstyle ":prompt:naive:*:exit"  pre  "%F{red}("
+zstyle ":prompt:naive:*:exit"  post ")%f"
 zstyle ":prompt:naive:*:path"  pre  "%B"
 zstyle ":prompt:naive:*:path"  post "%b"
 

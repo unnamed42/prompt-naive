@@ -2,6 +2,18 @@ prompt-naive-section-timer() {
   echo $prompt_naive_exec_time
 }
 
+prompt-naive-section-exit() {
+  local description
+  if [[ $prompt_naive_last_exit -eq 0 ]]; then
+    description=""
+  elif zstyle -t ":prompt:naive:item:exit" describe; then
+    description="$(kill -l $prompt_naive_last_exit)"
+  else
+    description="$prompt_naive_last_exit"
+  fi
+  echo $description
+}
+
 prompt-naive-section-venv() {
   local result
   if [[ ${VIRTUAL_ENV:t} == ".venv" ]]; then
