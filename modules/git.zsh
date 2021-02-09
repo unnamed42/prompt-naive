@@ -87,7 +87,7 @@ prompt-naive-git-status() {
   fi
   # use commit hash if no valid branch name or tag name exist
   if [[ $git_info[head] == "(detached)" ]]; then
-    local git_tag=$(command git tag --points-at=HEAD)
+    local git_tag=$(command git tag --points-at=HEAD --sort=committerdate | head -1)
     if [[ -n $git_tag ]]; then
       git_info[head]=$git_tag
     else

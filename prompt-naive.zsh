@@ -29,7 +29,6 @@ prompt-naive-render-item() {
       echo "prompt: invalid $lr section $item configured"
       continue
     fi
-    # echo pwd=$PWD item=$item rendered=$prompt_part
     [[ -n "${prompt_part// }" ]] && prompts+=("${pre}$prompt_part${post}")
   done
   local render_result=${(j. .)prompts}
