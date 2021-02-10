@@ -63,10 +63,10 @@ prompt-naive-section-git() {
     fi
     zstyle -s ":prompt:naive:git:pattern" $name pattern
     case $pattern in
-      *"??"*) [[ ${value:-0} -ne 0 ]] && expanded=${pattern//\?\?/$value} ;;
-      *"?:"*)   (( value ))           && expanded=${pattern//\?:/}        ;;
-      *"?="*)                            expanded=${pattern//\?\=/$value} ;;
-      *)                                 expanded=$pattern                ;;
+      *"??"*) [[ -n $value && $value != "0" ]] && expanded=${pattern//\?\?/$value} ;;
+      *"?:"*)        (( value ))               && expanded=${pattern//\?:/}        ;;
+      *"?="*)                                     expanded=${pattern//\?\=/$value} ;;
+      *)                                          expanded=$pattern                ;;
     esac
     expanded_section+=$expanded
   done
