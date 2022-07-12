@@ -49,6 +49,8 @@ prompt-naive-reset() {
 }
 
 prompt-naive-preexec() {
+  # this will only be set when shell has non-empty input
+  prompt_naive_has_command=1
   # the timer value will be lost on prompt reset
   prompt_naive_timer=$SECONDS
   async_flush_jobs "prompt-naive"
@@ -56,6 +58,12 @@ prompt-naive-preexec() {
 
 prompt-naive-precmd() {
   prompt_naive_last_exit=$?
+  # don't trust last exit if no command is executed
+  if [ -z $prompt_naive_has_command ]; then
+    prompt_naive_last_exit=0
+  else
+    unset prompt_naive_has_command
+  fi
 
   prompt-naive-save-timer
   unset prompt_naive_timer
