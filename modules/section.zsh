@@ -42,6 +42,9 @@ prompt-naive-section-user() {
   if zstyle -t ":prompt:naive:item:user" show-host; then
     __user+="@%M"
   fi
+  if [[ "$LOGNAME" == root || "$UID" -eq 0 ]]; then
+    __user="%F{red}${__user}%f"
+  fi
   echo "$__user"
 }
 
