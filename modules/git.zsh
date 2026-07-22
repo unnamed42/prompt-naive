@@ -10,12 +10,10 @@ prompt-naive-async-start-git() {
 }
 
 prompt-naive-async-setup-git() {
-  typeset -g prompt_naive_async_git_loaded
-  [[ -n $prompt_naive_async_git_loaded ]] && return
+  zpty -t "prompt-naive" &>/dev/null && return
   async_start_worker       "prompt-naive" -u
   async_register_callback  "prompt-naive" prompt-naive-async-git-callback
   async_worker_eval        "prompt-naive" prompt-naive-async-renice
-  prompt_naive_async_git_loaded=1
 }
 
 # lower the priority of background process, should be called by async_worker_eval
