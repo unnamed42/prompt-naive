@@ -10,7 +10,7 @@ prompt-naive-async-start-git() {
 }
 
 prompt-naive-async-setup-git() {
-  zpty -t "prompt-naive" &>/dev/null && return
+  zpty -t "prompt-naive-setup" &>/dev/null && return
   async_start_worker       "prompt-naive" -u
   async_register_callback  "prompt-naive" prompt-naive-async-git-callback
   async_worker_eval        "prompt-naive" prompt-naive-async-renice
